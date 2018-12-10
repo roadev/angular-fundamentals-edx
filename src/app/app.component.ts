@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GitSearchService } from './git-search.service';
 
 @Component({
@@ -8,20 +8,16 @@ import { GitSearchService } from './git-search.service';
   providers: [GitSearchService]
 })
 export class AppComponent implements OnInit {
-  constructor(private GitSearchService: GitSearchService) { }
+  constructor() { }
 
-  ngOnInit() {
-    // this.GitSearchService.gitSearch('angular').then(response => {
-    //   alert(`Total Libraries Found: ${response.total_count}`);
-    // }, (error) => {
-    //   alert(`Error: ${error.statusText}`)
-    // })
-
-    this.GitSearchService.gitUsers('Juan').then(response => {
-      alert(`Total users found: ${response.total_count}`);
-    }, (error) => {
-      alert(`Error: ${error.statusText}`)
-    })
+  ngOnInit(): void {
   }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+
+  }
+
   title = 'app is functional!';
 }
